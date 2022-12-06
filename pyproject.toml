@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{ include = "fake_web_events" }]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 Faker = "^4.1.1"
 pyaml = "^20.4.0"
 
