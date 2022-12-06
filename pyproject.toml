@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "fake-web-events"
+version = "0.2.5"
+description = "Generator of semi-random fake web events"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "fake_web_events" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Faker = "^4.1.1"
+pyaml = "^20.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^5.4.3"
+mock = "^4.0.2"
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
