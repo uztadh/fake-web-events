@@ -5,7 +5,7 @@ from fake_web_events.user import UserPool
 from fake_web_events.utils import load_config
 from time import time
 
-from typing import Generator
+from typing import Generator, Optional
 
 
 class Simulation:
@@ -20,8 +20,10 @@ class Simulation:
         user_pool_size: int,
         sessions_per_day: int = 10000,
         batch_size: int = 10,
-        init_time: datetime = datetime.now(),
+        init_time: Optional[datetime] = None,
     ):
+        if init_time is None:
+            init_time = datetime.now()
 
         self.user_pool = UserPool(size=user_pool_size)
         self.cur_sessions = []
@@ -98,7 +100,7 @@ class Simulation:
         """
         n_users = int(self.rate)
         n_users += choices([1, 0], cum_weights=[(self.rate % 1), 1])[0]
-        for n in range(n_users):
+        for _ in range(n_users):
             self.cur_sessions.append(
                 Event(self.cur_time, self.user_pool.get_user(), self.batch_size)
             )

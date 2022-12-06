@@ -27,7 +27,7 @@ def load_config() -> dict:
 
 class WeightedRandom:
 
-    config = load_config()
+    config: dict = load_config()
 
     def select(self, property_name: str) -> str:
         """
@@ -35,7 +35,7 @@ class WeightedRandom:
         :param property_name: a property name defined in config file
         :return:
         """
-        keys = [key for key in self.config.get(property_name).keys()]
+        keys = list(self.config.get(property_name).keys())
         weights = self.config.get(property_name).values()
         return random.choices(keys, weights=weights)[0]
 
@@ -43,6 +43,6 @@ class WeightedRandom:
         """
         Returns list of pages and weights from config
         """
-        pages = [page for page in self.config["pages"].get(page).keys()]
+        pages = list(self.config["pages"].get(page).keys())
         weights = list(self.config["pages"].get(page).values())
         return pages, weights

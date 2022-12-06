@@ -36,21 +36,21 @@ class User(Faker, WeightedRandom):
         """
         Build dictionary with geo attributes
         """
-        return dict(
-            geo_latitude=self.lat,
-            geo_longitude=self.lng,
-            geo_country=self.country,
-            geo_timezone=self.timezone,
-            geo_region_name=self.region,
-        )
+        return {
+            "geo_latitude": self.lat,
+            "geo_longitude": self.lng,
+            "geo_country": self.country,
+            "geo_timezone": self.timezone,
+            "geo_region_name": self.region,
+        }
 
     def ip(self) -> dict:
         """
         Build dictionary with ip attributes
         """
-        return dict(
-            ip_address=self.ipv4_public(),
-        )
+        return {
+            "ip_address": self.ipv4_public(),
+        }
 
     def browser(self) -> dict:
         """
@@ -63,11 +63,11 @@ class User(Faker, WeightedRandom):
             "Safari": self.safari(),
             "Opera": self.opera(),
         }
-        return dict(
-            browser_name=self.browser_name,
-            browser_user_agent=user_agents_dict[self.browser_name],
-            browser_language=self.locale(),
-        )
+        return {
+            "browser_name": self.browser_name,
+            "browser_user_agent": user_agents_dict[self.browser_name],
+            "browser_language": self.locale(),
+        }
 
     def operating_system(self) -> dict:
         """
@@ -81,11 +81,11 @@ class User(Faker, WeightedRandom):
             "iOS": self.ios_platform_token(),
         }
 
-        return dict(
-            os=os_dict[self.os_name],
-            os_name=self.os_name,
-            os_timezone=self.timezone,
-        )
+        return {
+            "os": os_dict[self.os_name],
+            "os_name": self.os_name,
+            "os_timezone": self.timezone,
+        }
 
     def device(self) -> dict:
         """
@@ -95,41 +95,42 @@ class User(Faker, WeightedRandom):
             self.device_type = "Mobile"
             self.device_is_mobile = True
 
-        return dict(
-            device_type=self.device_type, device_is_mobile=self.device_is_mobile
-        )
+        return {
+            "device_type": self.device_type,
+            "device_is_mobile": self.device_is_mobile,
+        }
 
     def user(self) -> dict:
         """
         Build dictionary with user attributes
         """
-        return dict(
-            user_custom_id=self.ascii_free_email(),
-            user_domain_id=str(self.uuid4()),
-        )
+        return {
+            "user_custom_id": self.ascii_free_email(),
+            "user_domain_id": str(self.uuid4()),
+        }
 
     def referer(self) -> dict:
         """
         Build dictionary with referer type attributes
         """
-        return dict(
-            referer_url=self.referer_url,
-            referer_url_scheme="http",
-            referer_url_port="80",
-            referer_medium=self.referer_medium,
-        )
+        return {
+            "referer_url": self.referer_url,
+            "referer_url_scheme": "http",
+            "referer_url_port": "80",
+            "referer_medium": self.referer_medium,
+        }
 
     def utm(self) -> dict:
         """
         Build dictionary with marketing attributes
         """
-        return dict(
-            utm_medium=self.utm_medium,
-            utm_source=self.referer_name,
-            utm_content=self.ad,
-            utm_campaign=self.campaign,
-            click_id=str(self.uuid4()),
-        )
+        return {
+            "utm_medium": self.utm_medium,
+            "utm_source": self.referer_name,
+            "utm_content": self.ad,
+            "utm_campaign": self.campaign,
+            "click_id": str(self.uuid4()),
+        }
 
     def asdict(self) -> dict:
         """

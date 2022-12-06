@@ -108,6 +108,46 @@ pycodestyle = ">=2.10.0,<2.11.0"
 pyflakes = ">=3.0.0,<3.1.0"
 
 [[package]]
+name = "flake8-bugbear"
+version = "22.10.27"
+description = "A plugin for flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+attrs = ">=19.2.0"
+flake8 = ">=3.0.0"
+
+[package.extras]
+dev = ["tox", "coverage", "hypothesis", "hypothesmith (>=0.2)", "pre-commit"]
+
+[[package]]
+name = "flake8-builtins"
+version = "2.0.1"
+description = "Check for python builtins being used as variables or parameters."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = "*"
+
+[package.extras]
+test = ["pytest"]
+
+[[package]]
+name = "flake8-comprehensions"
+version = "3.10.1"
+description = "A flake8 plugin to help you write better list/set/dict comprehensions."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = ">=3.0,<3.2.0 || >3.2.0"
+
+[[package]]
 name = "gitdb"
 version = "4.0.10"
 description = "Git Object Database"
@@ -348,7 +388,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f24b1fe702d317de2c4dc5cf852c922ee57ce12b03eac4f6e32b0ce8dd07ea6d"
+content-hash = "0ec0291f027c1f1aa4145e2a7d4f33ac06082674fbb8d5815ec5896736fd59de"
 
 [metadata.files]
 attrs = []
@@ -365,6 +405,9 @@ colorama = []
 exceptiongroup = []
 faker = []
 flake8 = []
+flake8-bugbear = []
+flake8-builtins = []
+flake8-comprehensions = []
 gitdb = []
 gitpython = []
 iniconfig = [

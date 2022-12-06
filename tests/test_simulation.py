@@ -15,19 +15,19 @@ def mock_simulation():
 
 @pytest.fixture()
 def mock_create_sessions(mock_simulation):
-    for idx in range(100):
+    for _idx in range(100):
         mock_simulation.create_sessions()
 
 
 @pytest.fixture()
 def mock_wait(mock_simulation):
-    for idx in range(100):
+    for _idx in range(100):
         mock_simulation.wait()
 
 
 @pytest.fixture()
 def mock_update(mock_simulation):
-    for idx in range(100):
+    for _idx in range(100):
         mock_simulation.update_all_sessions()
         mock_simulation.create_sessions()
         mock_simulation.wait()
@@ -59,5 +59,5 @@ class TestSimulation:
         # after running the simulation for some time, the max unique user ids
         # must be equal to the pool size
         events = list(mock_simulation.run(2))
-        user_domain_ids = set(event["user_domain_id"] for event in events)
+        user_domain_ids = {event["user_domain_id"] for event in events}
         assert len(user_domain_ids) == 10
