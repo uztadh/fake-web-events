@@ -19,11 +19,13 @@ mock = "^4.0.2"
 black = "^22.10.0"
 bandit = "^1.7.4"
 flake8 = "^6.0.0"
+toml = "^0.10.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bandit]
-exclude_dirs = [".venv/", ".git/"]
+skips = ["B311"]
+exclude_dirs = [".venv/", ".git/", "tests"]
 assert_used = { skips = ["*/test_*.py", "*/test_*.py", "*/conftest.py"] }
