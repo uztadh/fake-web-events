@@ -1,5 +1,5 @@
+import random
 from datetime import datetime, timedelta
-from random import randrange, choices
 from fake_web_events.event import Event
 from fake_web_events.user import UserPool
 from fake_web_events.utils import load_config
@@ -88,9 +88,10 @@ class Simulation:
         """
         Wait for given amount of time defined in batch size
         """
+        print(self.batch_size)
+        start, stop = -int(self.batch_size * 0.3), int(self.batch_size * 0.3)
         self.cur_time += timedelta(
-            seconds=self.batch_size
-            + randrange(-self.batch_size * 0.3, self.batch_size * 0.3)
+            seconds=self.batch_size + random.randrange(start, stop)
         )
         self.rate = self.get_rate_per_step()
 
@@ -99,7 +100,7 @@ class Simulation:
         Create a new session for a new user
         """
         n_users = int(self.rate)
-        n_users += choices([1, 0], cum_weights=[(self.rate % 1), 1])[0]
+        n_users += random.choices([1, 0], cum_weights=[(self.rate % 1), 1])[0]
         for _ in range(n_users):
             self.cur_sessions.append(
                 Event(self.cur_time, self.user_pool.get_user(), self.batch_size)
