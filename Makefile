@@ -25,7 +25,7 @@ format:
 	black .
 
 test:
-	pytest
+	pytest .
 
 build:
 	poetry build -q

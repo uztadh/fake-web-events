@@ -14,7 +14,7 @@ pyaml = "^20.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^5.4.3"
+pytest = "^7.1.1"
 mock = "^4.0.2"
 black = "^22.10.0"
 bandit = "^1.7.4"
