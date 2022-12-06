@@ -12,9 +12,9 @@ class Event(Faker, WeightedRandom):
     """
 
     def __init__(self, current_timestamp: datetime, user: User, batch_size: int):
-        super().__init__(['en_US'])
+        super().__init__(["en_US"])
         self.previous_page = None
-        self.current_page = self.select('landing_pages')
+        self.current_page = self.select("landing_pages")
         self.user = user
         self.batch_size = batch_size
         self.current_timestamp = self.randomize_timestamp(current_timestamp)
@@ -42,27 +42,24 @@ class Event(Faker, WeightedRandom):
         Return the event information as a dictionary
         """
         return {
-            'event_id': self.uuid4(),
-            'event_timestamp': self.current_timestamp.strftime('%Y-%m-%d %H:%M:%S.%f'),
-            'event_type': 'pageview',
-            'page_url': f'http://www.dummywebsite.com/{self.current_page}',
-            'page_url_path': f'/{self.current_page}',
+            "event_id": self.uuid4(),
+            "event_timestamp": self.current_timestamp.strftime("%Y-%m-%d %H:%M:%S.%f"),
+            "event_type": "pageview",
+            "page_url": f"http://www.dummywebsite.com/{self.current_page}",
+            "page_url_path": f"/{self.current_page}",
         }
 
     def asdict(self) -> dict:
         """
         Return the event + user as a dictionary
         """
-        return {
-            **self.pageview(),
-            **self.user
-        }
+        return {**self.pageview(), **self.user}
 
     def is_active(self) -> bool:
         """
         Check if session is currently active
         """
-        return self.current_page != 'session_end'
+        return self.current_page != "session_end"
 
     def update(self, timestamp: datetime) -> bool:
         """

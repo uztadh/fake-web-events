@@ -34,7 +34,6 @@ def mock_update(mock_simulation):
 
 
 class TestSimulation:
-
     def test_get_len_sessions(self, mock_simulation, mock_create_sessions):
         assert mock_simulation.get_len_sessions() == 81
 
@@ -42,7 +41,10 @@ class TestSimulation:
         assert mock_simulation.get_duration() == timedelta(seconds=939)
 
     def test_get_duration_str(self, mock_simulation, mock_wait):
-        assert mock_simulation.get_duration_str() == '0 days, 0 hours, 15 minutes, 39 seconds'
+        assert (
+            mock_simulation.get_duration_str()
+            == "0 days, 0 hours, 15 minutes, 39 seconds"
+        )
 
     def test_get_steps_per_hour(self, mock_simulation):
         assert mock_simulation.get_steps_per_hour() == 360
@@ -56,5 +58,5 @@ class TestSimulation:
     def test_max_unique_user_ids(self, mock_simulation):
         # after running the simulation for some time, the max unique user ids must be equal to the pool size
         events = list(mock_simulation.run(2))
-        user_domain_ids = set(event['user_domain_id'] for event in events)
+        user_domain_ids = set(event["user_domain_id"] for event in events)
         assert len(user_domain_ids) == 10
