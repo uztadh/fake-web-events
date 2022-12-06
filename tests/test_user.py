@@ -27,7 +27,7 @@ class TestUser:
     def test_browser(self, mock_user):
         assert mock_user.browser() == {
             "browser_name": "InternetExplorer",
-            "browser_user_agent": "Mozilla/5.0 (compatible; MSIE 5.0; Windows NT 4.0; Trident/4.0)",
+            "browser_user_agent": "Mozilla/5.0 (compatible; MSIE 5.0; Windows NT 4.0; Trident/4.0)",  # noqa: E501
             "browser_language": "fy_DE",
         }
 
@@ -39,7 +39,10 @@ class TestUser:
         }
 
     def test_device(self, mock_user):
-        assert mock_user.device() == {"device_type": "Mobile", "device_is_mobile": True}
+        assert mock_user.device() == {
+            "device_type": "Mobile",
+            "device_is_mobile": True,
+        }
 
     def test_user(self, mock_user):
         assert mock_user.user() == {

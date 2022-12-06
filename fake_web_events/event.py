@@ -11,7 +11,9 @@ class Event(Faker, WeightedRandom):
     Creates events and keeps tracks of sessions
     """
 
-    def __init__(self, current_timestamp: datetime, user: User, batch_size: int):
+    def __init__(
+        self, current_timestamp: datetime, user: User, batch_size: int
+    ):
         super().__init__(["en_US"])
         self.previous_page = None
         self.current_page = self.select("landing_pages")
@@ -22,10 +24,13 @@ class Event(Faker, WeightedRandom):
 
     def randomize_timestamp(self, timestamp: datetime) -> datetime:
         """
-        Randomize timestamps so not all events come with the same timestamp value
+        Randomize timestamps so not all events come with the same timestamp
+        value
         """
         range_milliseconds = int(self.batch_size * 0.3 * 1000)
-        random_interval = random.randrange(-range_milliseconds, range_milliseconds)
+        random_interval = random.randrange(
+            -range_milliseconds, range_milliseconds
+        )
         return timestamp + timedelta(milliseconds=random_interval)
 
     def get_next_page(self) -> str:
@@ -43,7 +48,9 @@ class Event(Faker, WeightedRandom):
         """
         return {
             "event_id": self.uuid4(),
-            "event_timestamp": self.current_timestamp.strftime("%Y-%m-%d %H:%M:%S.%f"),
+            "event_timestamp": self.current_timestamp.strftime(
+                "%Y-%m-%d %H:%M:%S.%f"
+            ),
             "event_type": "pageview",
             "page_url": f"http://www.dummywebsite.com/{self.current_page}",
             "page_url_path": f"/{self.current_page}",

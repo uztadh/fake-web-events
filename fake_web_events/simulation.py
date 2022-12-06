@@ -65,7 +65,9 @@ class Simulation:
         hours = duration_td.seconds // 3600
         minutes = (duration_td.seconds // 60) % 60
         seconds = duration_td.seconds % 60
-        return f"{days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
+        return (
+            f"{days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
+        )
 
     def get_steps_per_hour(self) -> float:
         """
@@ -111,7 +113,8 @@ class Simulation:
 
     def run(self, duration_seconds: int) -> Generator[dict, None, None]:
         """
-        Function to run a simulation for the given duration in seconds. Yields events.
+        Function to run a simulation for the given duration in seconds. Yields
+        events.
         """
         start = time()
         while time() - start < duration_seconds:

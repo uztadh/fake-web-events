@@ -10,7 +10,9 @@ class SumNotOneException(Exception):
     Custom exception for error reporting.
     """
 
-    def __init__(self, key, key_sum, message="Sum of probabilities is not equal to 1"):
+    def __init__(
+        self, key, key_sum, message="Sum of probabilities is not equal to 1"
+    ):
         self.key = key
         self.key_sum = key_sum
         self.message = message
@@ -18,7 +20,8 @@ class SumNotOneException(Exception):
 
     def __str__(self):
         return (
-            f"{self.message}.\n{self.key} == {self.key_sum}. Make sure it is equal 1."
+            f"{self.message}.\n{self.key} == {self.key_sum}."
+            + " Make sure it is equal 1."
         )
 
 

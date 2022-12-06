@@ -22,7 +22,7 @@ lint:
 	bandit -q -r -c "pyproject.toml" .
 
 format:
-	black .
+	black --line-length 80 .
 
 test:
 	pytest .

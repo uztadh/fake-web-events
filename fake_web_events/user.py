@@ -82,7 +82,9 @@ class User(Faker, WeightedRandom):
         }
 
         return dict(
-            os=os_dict[self.os_name], os_name=self.os_name, os_timezone=self.timezone
+            os=os_dict[self.os_name],
+            os_name=self.os_name,
+            os_timezone=self.timezone,
         )
 
     def device(self) -> dict:
@@ -102,7 +104,8 @@ class User(Faker, WeightedRandom):
         Build dictionary with user attributes
         """
         return dict(
-            user_custom_id=self.ascii_free_email(), user_domain_id=str(self.uuid4())
+            user_custom_id=self.ascii_free_email(),
+            user_domain_id=str(self.uuid4()),
         )
 
     def referer(self) -> dict:
@@ -158,7 +161,7 @@ class UserPool:
 
     def populate_pool(self):
         logging.info(
-            "Creating UserPool. This might take a while depending on your pool size."
+            "Creating UserPool. This might take a while depending on your pool size."  # noqa: E501
         )
         for idx in range(1, self.size + 1):
             if idx % 100 == 0:

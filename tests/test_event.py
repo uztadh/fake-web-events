@@ -15,7 +15,9 @@ def mock_event():
 
 class TestEvent:
     def test_randomize_timestamp(self, mock_event):
-        actual = mock_event.randomize_timestamp(datetime(2020, 7, 7, 0, 0, 0, 0))
+        actual = mock_event.randomize_timestamp(
+            datetime(2020, 7, 7, 0, 0, 0, 0)
+        )
         expected = datetime(2020, 7, 7, 0, 0, 0, 904000)
         assert actual == expected
 

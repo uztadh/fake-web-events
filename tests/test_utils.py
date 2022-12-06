@@ -32,13 +32,25 @@ def test_weighted_random_select(property_name, expected):
         ),
         (
             "product_a",
-            (["product_a", "home", "cart", "session_end"], [0.5, 0.18, 0.12, 0.2]),
+            (
+                ["product_a", "home", "cart", "session_end"],
+                [0.5, 0.18, 0.12, 0.2],
+            ),
         ),
         (
             "product_b",
-            (["product_b", "home", "cart", "session_end"], [0.4, 0.22, 0.14, 0.24]),
+            (
+                ["product_b", "home", "cart", "session_end"],
+                [0.4, 0.22, 0.14, 0.24],
+            ),
         ),
-        ("cart", (["cart", "payment", "home", "session_end"], [0.25, 0.5, 0.15, 0.1])),
+        (
+            "cart",
+            (
+                ["cart", "payment", "home", "session_end"],
+                [0.25, 0.5, 0.15, 0.1],
+            ),
+        ),
         (
             "payment",
             (
